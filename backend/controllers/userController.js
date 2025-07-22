@@ -4,18 +4,26 @@ import bcrypt from "bcryptjs";
 import createToken from "../utils/createToken.js";
 
 const createUser = asyncHandler(async (req, res) => {
-  const { username, email, password } = req.body;
+  const { run, name, lastName, email, phone, address, password } = req.body;
 
-  if (!username || !email || !password) {
-    throw new Error("Please fill all the inputs.");
+  if (!run || !name || !lastName || !email || !phone || !address || !password) {
+    throw new Error("Por favor, complete todos los campos");
   }
 
   const userExists = await User.findOne({ email });
-  if (userExists) res.status(400).send("User already exists");
+  if (userExists) res.status(400).send("El usuario ya existe");
 
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
-  const newUser = new User({ username, email, password: hashedPassword });
+  const newUser = new User({
+    run,
+    name,
+    lastName,
+    email,
+    phone,
+    address,
+    password: hashedPassword,
+  });
 
   try {
     await newUser.save();
@@ -23,13 +31,17 @@ const createUser = asyncHandler(async (req, res) => {
 
     res.status(201).json({
       _id: newUser._id,
-      username: newUser.username,
+      run: newUser.run,
+      name: newUser.name,
+      lastName: newUser.lastName,
       email: newUser.email,
+      phone: newUser.phone,
+      address: newUser.address,
       isAdmin: newUser.isAdmin,
     });
   } catch (error) {
     res.status(400);
-    throw new Error("Invalid user data");
+    throw new Error("Información de usuario inválida");
   }
 });
 
@@ -52,8 +64,12 @@ const loginUser = asyncHandler(async (req, res) => {
 
       res.status(201).json({
         _id: existingUser._id,
-        username: existingUser.username,
+        run: existingUser.run,
+        name: existingUser.name,
+        lastName: existingUser.lastName,
         email: existingUser.email,
+        phone: existingUser.phone,
+        address: existingUser.address,
         isAdmin: existingUser.isAdmin,
       });
       return;
@@ -67,7 +83,7 @@ const logoutCurrentUser = asyncHandler(async (req, res) => {
     expires: new Date(0),
   });
 
-  res.status(200).json({ message: "Logged out successfully" });
+  res.status(200).json({ message: "Cierre de sesión exitoso" });
 });
 
 const getAllUsers = asyncHandler(async (req, res) => {
