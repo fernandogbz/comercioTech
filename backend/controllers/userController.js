@@ -123,8 +123,12 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
 
     res.json({
       _id: updatedUser._id,
+      run: updatedUser.run,
       name: updatedUser.name,
+      lastName: updatedUser.lastName,
       email: updatedUser.email,
+      phone: updatedUser.phone,
+      address: updatedUser.address,
       isAdmin: updatedUser.isAdmin,
     });
   } else {
