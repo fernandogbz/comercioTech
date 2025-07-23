@@ -34,3 +34,13 @@
   display: none;
   transition: opacity 0.2s ease-in-out; /* Add opacity transition */
 }
+
+@media (max-width: 768px) {
+  #navigation-container {
+    width: 8%;
+  }
+
+  #navigation-container:hover {
+    width: 20%;
+  }
+}

@@ -126,7 +126,7 @@ const Navigation = () => {
 
         {dropdownOpen && userInfo && (
           <ul
-            className={`absolute right-0 mt-2 mr-14 space-y-2 bg-white text-gray-600 ${
+            className={`absolute w-32 right-0 mt-2 mr-14 space-y-2 bg-white text-gray-600 ${
               !userInfo.isAdmin ? "-top-20" : "-top-80"
             } `}
           >
