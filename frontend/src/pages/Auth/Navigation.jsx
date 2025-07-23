@@ -55,7 +55,7 @@ const Navigation = () => {
           className="flex items-center transition-transform transform hover:translate-x-2"
         >
           <AiOutlineHome className="mr-2 mt-[3rem]" size={26} />
-          <span className="hidden nav-item-name mt-[3rem]">HOME</span>{" "}
+          <span className="hidden nav-item-name mt-[3rem]">Inicio</span>{" "}
         </Link>
 
         <Link
@@ -63,13 +63,13 @@ const Navigation = () => {
           className="flex items-center transition-transform transform hover:translate-x-2"
         >
           <AiOutlineShopping className="mr-2 mt-[3rem]" size={26} />
-          <span className="hidden nav-item-name mt-[3rem]">SHOP</span>{" "}
+          <span className="hidden nav-item-name mt-[3rem]">Tienda</span>{" "}
         </Link>
 
         <Link to="/cart" className="flex relative">
           <div className="flex items-center transition-transform transform hover:translate-x-2">
             <AiOutlineShoppingCart className="mt-[3rem] mr-2" size={26} />
-            <span className="hidden nav-item-name mt-[3rem]">Cart</span>{" "}
+            <span className="hidden nav-item-name mt-[3rem]">Carrito</span>{" "}
           </div>
 
           <div className="absolute top-9">
@@ -87,7 +87,7 @@ const Navigation = () => {
           <div className="flex justify-center items-center transition-transform transform hover:translate-x-2">
             <FaHeart className="mt-[3rem] mr-2" size={20} />
             <span className="hidden nav-item-name mt-[3rem]">
-              Favorites
+              Favoritos
             </span>{" "}
             <FavoritesCount />
           </div>
@@ -145,7 +145,7 @@ const Navigation = () => {
                     to="/admin/productlist"
                     className="block px-4 py-2 hover:bg-gray-100"
                   >
-                    Products
+                    Productos
                   </Link>
                 </li>
                 <li>
@@ -153,7 +153,7 @@ const Navigation = () => {
                     to="/admin/categorylist"
                     className="block px-4 py-2 hover:bg-gray-100"
                   >
-                    Category
+                    Categoría
                   </Link>
                 </li>
                 <li>
@@ -161,7 +161,7 @@ const Navigation = () => {
                     to="/admin/orderlist"
                     className="block px-4 py-2 hover:bg-gray-100"
                   >
-                    Orders
+                    Pedidos
                   </Link>
                 </li>
                 <li>
@@ -169,7 +169,7 @@ const Navigation = () => {
                     to="/admin/userlist"
                     className="block px-4 py-2 hover:bg-gray-100"
                   >
-                    Users
+                    Usuarios
                   </Link>
                 </li>
               </>
@@ -177,7 +177,7 @@ const Navigation = () => {
 
             <li>
               <Link to="/profile" className="block px-4 py-2 hover:bg-gray-100">
-                Profile
+                Perfil
               </Link>
             </li>
             <li>
@@ -185,7 +185,7 @@ const Navigation = () => {
                 onClick={logoutHandler}
                 className="block w-full px-4 py-2 text-left hover:bg-gray-100"
               >
-                Logout
+                Cerrar Sesión
               </button>
             </li>
           </ul>
