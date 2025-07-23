@@ -207,7 +207,7 @@ const Navigation = () => {
                 className="flex items-center mt-5 transition-transform transform hover:translate-x-2"
               >
                 <AiOutlineUserAdd size={26} />
-                <span className="hidden nav-item-name">REGISTER</span>
+                <span className="hidden nav-item-name">REGISTRO</span>
               </Link>
             </li>
           </ul>
