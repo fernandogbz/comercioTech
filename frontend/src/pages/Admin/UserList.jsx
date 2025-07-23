@@ -37,9 +37,9 @@ const UserList = () => {
     }
   };
 
-  const toggleEdit = (id, username, email) => {
+  const toggleEdit = (id, name, email) => {
     setEditableUserId(id);
-    setEditableUserName(username);
+    setEditableUserName(name);
     setEditableUserEmail(email);
   };
 
@@ -47,7 +47,7 @@ const UserList = () => {
     try {
       await updateUser({
         userId: id,
-        username: editableUserName,
+        name: editableUserName,
         email: editableUserEmail,
       });
       setEditableUserId(null);
@@ -101,10 +101,10 @@ const UserList = () => {
                       </div>
                     ) : (
                       <div className="flex items-center">
-                        {user.username}{" "}
+                        {user.name}{" "}
                         <button
                           onClick={() =>
-                            toggleEdit(user._id, user.username, user.email)
+                            toggleEdit(user._id, user.name, user.email)
                           }
                         >
                           <FaEdit className="ml-[1rem]" />
