@@ -100,7 +100,7 @@ const Navigation = () => {
           className="flex items-center text-gray-800 focus:outline-none"
         >
           {userInfo ? (
-            <span className="text-white">{userInfo.username}</span>
+            <span className="text-white">{userInfo.name}</span>
           ) : (
             <></>
           )}
