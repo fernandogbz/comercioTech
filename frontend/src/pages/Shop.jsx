@@ -86,7 +86,7 @@ const Shop = () => {
         <div className="flex md:flex-row">
           <div className="bg-[#151515] p-3 mt-2 mb-2">
             <h2 className="h4 text-center py-2 bg-black rounded-full mb-2">
-              Filter by Categories
+              Filtrar por Categorías
             </h2>
 
             <div className="p-5 w-[15rem]">
@@ -112,7 +112,7 @@ const Shop = () => {
             </div>
 
             <h2 className="h4 text-center py-2 bg-black rounded-full mb-2">
-              Filter by Brands
+              Filtrar por Marcas
             </h2>
 
             <div className="p-5">
@@ -139,13 +139,13 @@ const Shop = () => {
             </div>
 
             <h2 className="h4 text-center py-2 bg-black rounded-full mb-2">
-              Filer by Price
+              Filtrar por Precio
             </h2>
 
             <div className="p-5 w-[15rem]">
               <input
                 type="text"
-                placeholder="Enter Price"
+                placeholder="Ingresa precio"
                 value={priceFilter}
                 onChange={handlePriceChange}
                 className="w-full px-3 py-2 placeholder-gray-400 border rounded-lg focus:outline-none focus:ring focus:border-pink-300"
@@ -163,7 +163,9 @@ const Shop = () => {
           </div>
 
           <div className="p-3">
-            <h2 className="h4 text-center mb-2">{products?.length} Products</h2>
+            <h2 className="h4 text-center mb-2">
+              {products?.length} Productos
+            </h2>
             <div className="flex flex-wrap">
               {products.length === 0 ? (
                 <Loader />
