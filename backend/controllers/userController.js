@@ -97,12 +97,12 @@ const getCurrentUserProfile = asyncHandler(async (req, res) => {
   if (user) {
     res.json({
       _id: user._id,
-      username: user.username,
+      name: user.name,
       email: user.email,
     });
   } else {
     res.status(404);
-    throw new Error("User not found.");
+    throw new Error("Usuario no encontrado");
   }
 });
 
@@ -110,7 +110,7 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
 
   if (user) {
-    user.username = req.body.username || user.username;
+    user.name = req.body.name || user.name;
     user.email = req.body.email || user.email;
 
     if (req.body.password) {
@@ -123,13 +123,13 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) => {
 
     res.json({
       _id: updatedUser._id,
-      username: updatedUser.username,
+      name: updatedUser.name,
       email: updatedUser.email,
       isAdmin: updatedUser.isAdmin,
     });
   } else {
     res.status(404);
-    throw new Error("User not found");
+    throw new Error("Usuario no encontrado");
   }
 });
 
@@ -139,14 +139,14 @@ const deleteUserById = asyncHandler(async (req, res) => {
   if (user) {
     if (user.isAdmin) {
       res.status(400);
-      throw new Error("Cannot delete admin user");
+      throw new Error("No se puede eliminar el usuario administrador");
     }
 
     await User.deleteOne({ _id: user._id });
     res.json({ message: "User removed" });
   } else {
     res.status(404);
-    throw new Error("User not found.");
+    throw new Error("Usuario no encontrado");
   }
 });
 
@@ -157,7 +157,7 @@ const getUserById = asyncHandler(async (req, res) => {
     res.json(user);
   } else {
     res.status(404);
-    throw new Error("User not found");
+    throw new Error("Usuario no encontrado");
   }
 });
 
@@ -165,7 +165,7 @@ const updateUserById = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id);
 
   if (user) {
-    user.username = req.body.username || user.username;
+    user.name = req.body.name || user.name;
     user.email = req.body.email || user.email;
     user.isAdmin = Boolean(req.body.isAdmin);
 
@@ -173,13 +173,13 @@ const updateUserById = asyncHandler(async (req, res) => {
 
     res.json({
       _id: updatedUser._id,
-      username: updatedUser.username,
+      name: updatedUser.name,
       email: updatedUser.email,
       isAdmin: updatedUser.isAdmin,
     });
   } else {
     res.status(404);
-    throw new Error("User not found");
+    throw new Error("Usuario no encontrado");
   }
 });
 
