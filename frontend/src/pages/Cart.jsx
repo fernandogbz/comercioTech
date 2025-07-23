@@ -27,12 +27,14 @@ const Cart = () => {
       <div className="container flex justify-around items-start flex wrap mx-auto mt-8">
         {cartItems.length === 0 ? (
           <div>
-            Your cart is empty <Link to="/shop">Go To Shop</Link>
+            Tu carrito esta vacío <Link to="/shop">Ve a la Tienda</Link>
           </div>
         ) : (
           <>
             <div className="flex flex-col w-[80%]">
-              <h1 className="text-2xl font-semibold mb-4">Shopping Cart</h1>
+              <h1 className="text-2xl font-semibold mb-4">
+                Carrito de Compras
+              </h1>
 
               {cartItems.map((item) => (
                 <div key={item._id} className="flex items-enter mb-[1rem] pb-2">
@@ -100,7 +102,7 @@ const Cart = () => {
                     disabled={cartItems.length === 0}
                     onClick={checkoutHandler}
                   >
-                    Proceed To Checkout
+                    Proceso de Pago
                   </button>
                 </div>
               </div>
