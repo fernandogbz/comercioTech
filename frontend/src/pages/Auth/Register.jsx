@@ -7,8 +7,12 @@ import { setCredentials } from "../../redux/features/auth/authSlice";
 import { toast } from "react-toastify";
 
 const Register = () => {
-  const [username, setName] = useState("");
+  const [run, setRun] = useState("");
+  const [name, setName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAdress] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -33,13 +37,21 @@ const Register = () => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      toast.error("Passwords do not match");
+      toast.error("Las contraseñas no coinciden");
     } else {
       try {
-        const res = await register({ username, email, password }).unwrap();
+        const res = await register({
+          run,
+          name,
+          lastName,
+          email,
+          phone,
+          address,
+          password,
+        }).unwrap();
         dispatch(setCredentials({ ...res }));
         navigate(redirect);
-        toast.success("User successfully registered");
+        toast.success("Usuario registrado exitosamente");
       } catch (err) {
         console.log(err);
         toast.error(err.data.message);
@@ -48,25 +60,57 @@ const Register = () => {
   };
 
   return (
-    <section className="pl-[10rem] flex flex-wrap">
-      <div className="mr-[4rem] mt-[5rem]">
-        <h1 className="text-2xl font-semibold mb-4">Register</h1>
+    <section className="pl-[7rem] flex flex-wrap">
+      <div className="mr-[4rem] mt-[4rem]">
+        <h1 className="text-2xl font-semibold mb-4">Regístrate</h1>
 
         <form onSubmit={submitHandler} className="container w-[40rem]">
+          <div className="my-[2rem]">
+            <label
+              htmlFor="run"
+              className="block text-sm font-medium text-white"
+            >
+              Run
+            </label>
+            <input
+              type="text"
+              id="run"
+              className="mt-1 p-2 border rounded w-full"
+              placeholder="Ingresa run"
+              value={run}
+              onChange={(e) => setRun(e.target.value)}
+            />
+          </div>
           <div className="my-[2rem]">
             <label
               htmlFor="name"
               className="block text-sm font-medium text-white"
             >
-              Name
+              Nombre
             </label>
             <input
               type="text"
               id="name"
               className="mt-1 p-2 border rounded w-full"
-              placeholder="Enter name"
-              value={username}
+              placeholder="Ingresa nombre"
+              value={name}
               onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="my-[2rem]">
+            <label
+              htmlFor="lastName"
+              className="block text-sm font-medium text-white"
+            >
+              Apellido
+            </label>
+            <input
+              type="text"
+              id="lastName"
+              className="mt-1 p-2 border rounded w-full"
+              placeholder="Ingresa apellido"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
             />
           </div>
 
@@ -75,15 +119,49 @@ const Register = () => {
               htmlFor="email"
               className="block text-sm font-medium text-white"
             >
-              Email Address
+              Email
             </label>
             <input
               type="email"
               id="email"
               className="mt-1 p-2 border rounded w-full"
-              placeholder="Enter email"
+              placeholder="Ingresa email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+
+          <div className="my-[2rem]">
+            <label
+              htmlFor="phone"
+              className="block text-sm font-medium text-white"
+            >
+              Teléfono
+            </label>
+            <input
+              type="text"
+              id="phone"
+              className="mt-1 p-2 border rounded w-full"
+              placeholder="Ingresa teléfono"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
+          </div>
+
+          <div className="my-[2rem]">
+            <label
+              htmlFor="address"
+              className="block text-sm font-medium text-white"
+            >
+              Dirección
+            </label>
+            <input
+              type="text"
+              id="address"
+              className="mt-1 p-2 border rounded w-full"
+              placeholder="Ingresa dirección de envío"
+              value={address}
+              onChange={(e) => setAdress(e.target.value)}
             />
           </div>
 
@@ -92,13 +170,13 @@ const Register = () => {
               htmlFor="password"
               className="block text-sm font-medium text-white"
             >
-              Password
+              Contraseña
             </label>
             <input
               type="password"
               id="password"
               className="mt-1 p-2 border rounded w-full"
-              placeholder="Enter password"
+              placeholder="Ingresa Contraseña"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -109,13 +187,13 @@ const Register = () => {
               htmlFor="confirmPassword"
               className="block text-sm font-medium text-white"
             >
-              Confirm Password
+              Confirmar Contraseña
             </label>
             <input
               type="password"
               id="confirmPassword"
               className="mt-1 p-2 border rounded w-full"
-              placeholder="Confirm password"
+              placeholder="Repite Contraseña Ingresada"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
@@ -126,7 +204,7 @@ const Register = () => {
             type="submit"
             className="bg-pink-500 text-white px-4 py-2 rounded cursor-pointer my-[1rem]"
           >
-            {isLoading ? "Registering..." : "Register"}
+            {isLoading ? "Registrando..." : "Regístrate"}
           </button>
 
           {isLoading && <Loader />}
@@ -134,7 +212,7 @@ const Register = () => {
 
         <div className="mt-4">
           <p className="text-white">
-            Already have an account?{" "}
+            Ya tienes una cuenta?{" "}
             <Link
               to={redirect ? `/login?redirect=${redirect}` : "/login"}
               className="text-pink-500 hover:underline"
