@@ -143,7 +143,17 @@ const deleteUserById = asyncHandler(async (req, res) => {
     }
 
     await User.deleteOne({ _id: user._id });
-    res.json({ message: "User removed" });
+    res.json({
+      message:
+        "Usuario eliminado" +
+        " (" +
+        user.name +
+        " " +
+        user.lastName +
+        " " +
+        user.email +
+        ")",
+    });
   } else {
     res.status(404);
     throw new Error("Usuario no encontrado");
