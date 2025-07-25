@@ -33,7 +33,7 @@ const AdminDashboard = () => {
         curve: "smooth",
       },
       title: {
-        text: "Sales Trend",
+        text: "Tendencias de Ventas",
         align: "left",
       },
       grid: {
@@ -45,12 +45,12 @@ const AdminDashboard = () => {
       xaxis: {
         categories: [],
         title: {
-          text: "Date",
+          text: "Fecha",
         },
       },
       yaxis: {
         title: {
-          text: "Sales",
+          text: "Ventas",
         },
         min: 0,
       },
@@ -99,7 +99,7 @@ const AdminDashboard = () => {
               $
             </div>
 
-            <p className="mt-5">Sales</p>
+            <p className="mt-5">Ventas</p>
             <h1 className="text-xl font-bold">
               $ {isLoading ? <Loader /> : sales.totalSales.toFixed(2)}
             </h1>
@@ -109,7 +109,7 @@ const AdminDashboard = () => {
               $
             </div>
 
-            <p className="mt-5">Customers</p>
+            <p className="mt-5">Clientes</p>
             <h1 className="text-xl font-bold">
               $ {isLoading ? <Loader /> : customers?.length}
             </h1>
@@ -119,7 +119,7 @@ const AdminDashboard = () => {
               $
             </div>
 
-            <p className="mt-5">All Orders</p>
+            <p className="mt-5">Total Pedidos</p>
             <h1 className="text-xl font-bold">
               $ {isLoading ? <Loader /> : orders?.totalOrders}
             </h1>
