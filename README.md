@@ -1,2 +1,1 @@
 # ComercioTech E-Commerce Store
-
